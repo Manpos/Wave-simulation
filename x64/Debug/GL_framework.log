@@ -1,4 +1,5 @@
-﻿  render.cpp
+﻿  physics.cpp
+c:\users\mpostigo\documents\github\wave-simulation\src\physics.cpp(22): warning C4305: 'initializing': truncation from 'double' to 'float'
   GL_framework.vcxproj -> C:\Users\mpostigo\Documents\GitHub\Wave-simulation\x64\Debug\GL_framework.exe
   GL_framework.vcxproj -> C:\Users\mpostigo\Documents\GitHub\Wave-simulation\x64\Debug\GL_framework.pdb (Partial PDB)
   0 File(s) copied

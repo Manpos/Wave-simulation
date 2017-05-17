@@ -71,16 +71,16 @@ vec3 * CreateClothMeshArray(int rowVerts, int columnVerts, float vertexSeparatio
 void PhysicsInit() {
 	//TODO
 	vec3 meshPosition(-8.5, 5, -6.5);
-	waveInitialVertexPosition = waveVertexPosition = CreateClothMeshArray(ClothMesh::numRows, ClothMesh::numCols, separationX, separationY, meshPosition);
+	waveInitialVertexPosition = CreateClothMeshArray(ClothMesh::numRows, ClothMesh::numCols, separationX, separationY, meshPosition);
+	waveVertexPosition = CreateClothMeshArray(ClothMesh::numRows, ClothMesh::numCols, separationX, separationY, meshPosition);
 }
 void PhysicsUpdate(float dt) {
 	//TODO
 	time += dt;
 	for (int i = 0; i < ClothMesh::numVerts; ++i) {
-		waveVector = vec3(1.0, 1.0, 1.0);
-		//waveVertexPosition[i].z = waveInitialVertexPosition[i].z - normalize(waveVector).z * A * sin(waveVector.z * omega * time);
-		//waveVertexPosition[i].x = waveInitialVertexPosition[i].x - normalize(waveVector).x * A * sin(waveVector.z * omega * time);
-		waveVertexPosition[i].y = A * cos(waveVector.y * waveInitialVertexPosition[i].x - omega * time) + 5;
+		waveVector = vec3(1.0, 1.0, 0.0);
+		waveVertexPosition[i] = waveInitialVertexPosition[i] - normalize(waveVector) * A * sin(dot(waveVector, waveInitialVertexPosition[i]) - omega * time);
+		waveVertexPosition[i].y = A * cos(dot(waveVector, waveInitialVertexPosition[i]) - omega * time) + 5;
 	}
 
 	ClothMesh::updateClothMesh(&waveVertexPosition[0].x);
