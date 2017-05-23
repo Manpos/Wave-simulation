@@ -20,8 +20,7 @@ vec3 *waveInitialVertexPosition;
 
 float separationX = 1, separationY = 1;
 float gravity = -9.8;
-vec3 spherePosition(0.0f, 1.0f, 0.0f);
-float sphereRadius = 3.0f;
+
 float stretchD = 50, shearD = 50, bendD = 50, stretchK = 1000, shearK, bendK;
 float elasticity = 0.5;
 
@@ -30,6 +29,11 @@ float A = 0.5;	//Amplitude
 float omega = 2;
 vec3 waveVector;
 float time = 0;
+
+//Sphere parameters
+vec3 spherePosition = vec3(0.0, 5.0, 0.0);
+float sphereRadius = 0.5;
+
 #pragma endregion
 
 bool show_test_window = false;
@@ -68,6 +72,11 @@ vec3 * CreateClothMeshArray(int rowVerts, int columnVerts, float vertexSeparatio
 	return result;
 }
 
+void updateSphere() {
+	spherePosition;
+	sphereRadius;
+}
+
 void PhysicsInit() {
 	//TODO
 	vec3 meshPosition(-8.5, 5, -6.5);
@@ -82,6 +91,8 @@ void PhysicsUpdate(float dt) {
 		waveVertexPosition[i] = waveInitialVertexPosition[i] - normalize(waveVector) * A * sin(dot(waveVector, waveInitialVertexPosition[i]) - omega * time);
 		waveVertexPosition[i].y = A * cos(dot(waveVector, waveInitialVertexPosition[i]) - omega * time) + 5;
 	}
+	
+
 
 	ClothMesh::updateClothMesh(&waveVertexPosition[0].x);
 }
