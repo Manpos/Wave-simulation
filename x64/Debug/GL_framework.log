@@ -1,8 +1,18 @@
 ﻿  physics.cpp
 c:\users\mripoll\documents\github\wave-simulation\src\physics.cpp(22): warning C4305: 'initializing': truncation from 'double' to 'float'
-c:\users\mripoll\documents\github\wave-simulation\src\physics.cpp(89): warning C4305: '+=': truncation from 'double' to 'float'
-c:\users\mripoll\documents\github\wave-simulation\src\physics.cpp(90): warning C4305: '-=': truncation from 'double' to 'float'
-  GL_framework.vcxproj -> C:\Users\mripoll\Documents\GitHub\Wave-simulation\x64\Debug\GL_framework.exe
-  GL_framework.vcxproj -> C:\Users\mripoll\Documents\GitHub\Wave-simulation\x64\Debug\GL_framework.pdb (Partial PDB)
-  0 File(s) copied
-  0 File(s) copied
+c:\users\mripoll\documents\github\wave-simulation\src\physics.cpp(87): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\mripoll\documents\github\wave-simulation\src\physics.cpp(89): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+c:\users\mripoll\documents\github\wave-simulation\src\physics.cpp(106): error C2784: 'bool std::operator <=(const std::basic_string<_Elem,_Traits,_Alloc> &,const _Elem *)': could not deduce template argument for 'const std::basic_string<_Elem,_Traits,_Alloc> &' from 'glm::tvec3<float,0>'
+  c:\program files (x86)\microsoft visual studio 14.0\vc\include\xstring(2596): note: see declaration of 'std::operator <='
+c:\users\mripoll\documents\github\wave-simulation\src\physics.cpp(106): error C2784: 'bool std::operator <=(const _Elem *,const std::basic_string<_Elem,_Traits,_Alloc> &)': could not deduce template argument for 'const _Elem *' from 'glm::tvec3<float,0>'
+  c:\program files (x86)\microsoft visual studio 14.0\vc\include\xstring(2586): note: see declaration of 'std::operator <='
+c:\users\mripoll\documents\github\wave-simulation\src\physics.cpp(106): error C2784: 'bool std::operator <=(const std::basic_string<_Elem,_Traits,_Alloc> &,const std::basic_string<_Elem,_Traits,_Alloc> &) noexcept': could not deduce template argument for 'const std::basic_string<_Elem,_Traits,_Alloc> &' from 'glm::tvec3<float,0>'
+  c:\program files (x86)\microsoft visual studio 14.0\vc\include\xstring(2576): note: see declaration of 'std::operator <='
+c:\users\mripoll\documents\github\wave-simulation\src\physics.cpp(106): error C2784: 'bool std::operator <=(const std::move_iterator<_RanIt> &,const std::move_iterator<_RanIt2> &)': could not deduce template argument for 'const std::move_iterator<_RanIt> &' from 'glm::tvec3<float,0>'
+  c:\program files (x86)\microsoft visual studio 14.0\vc\include\xutility(2249): note: see declaration of 'std::operator <='
+c:\users\mripoll\documents\github\wave-simulation\src\physics.cpp(106): error C2784: 'bool std::operator <=(const std::reverse_iterator<_RanIt> &,const std::reverse_iterator<_RanIt2> &)': could not deduce template argument for 'const std::reverse_iterator<_RanIt> &' from 'glm::tvec3<float,0>'
+  c:\program files (x86)\microsoft visual studio 14.0\vc\include\xutility(1330): note: see declaration of 'std::operator <='
+c:\users\mripoll\documents\github\wave-simulation\src\physics.cpp(106): error C2784: 'bool std::operator <=(const std::pair<_Ty1,_Ty2> &,const std::pair<_Ty1,_Ty2> &)': could not deduce template argument for 'const std::pair<_Ty1,_Ty2> &' from 'glm::tvec3<float,0>'
+  c:\program files (x86)\microsoft visual studio 14.0\vc\include\utility(303): note: see declaration of 'std::operator <='
+c:\users\mripoll\documents\github\wave-simulation\src\physics.cpp(106): error C2676: binary '<=': 'glm::tvec3<float,0>' does not define this operator or a conversion to a type acceptable to the predefined operator
+c:\users\mripoll\documents\github\wave-simulation\src\physics.cpp(110): warning C4305: 'argument': truncation from 'double' to 'float'
