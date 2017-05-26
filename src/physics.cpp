@@ -33,9 +33,13 @@ float time = 0;
 //Sphere parameters
 vec3 spherePosition = vec3(0.0f, 10.0f, 0.0f);
 float sphereRadius = 0.5;
+vec3 sphereOnWavePosition = vec3(0.0f);
+vec3 initialSpherePosition;
+float sphereMass = 1;
+float sphereArea = 3.14 * (sphereRadius * sphereRadius);
 
 //Buoyancy parameters
-float p; //Density of the fluid
+float p = 1; //Density of the fluid
 float vSub; //Volume "submergit" of the sphere
 
 #pragma endregion
@@ -76,17 +80,38 @@ vec3 * CreateClothMeshArray(int rowVerts, int columnVerts, float vertexSeparatio
 	return result;
 }
 
-void UpdateSphere(float dt, float force) {
-	// Euler movement
-	spherePosition.y = spherePosition.y + dt * force;
+float BuoyancyForce() {
+
+	float subHeight = sphereOnWavePosition.y - (spherePosition.y - sphereRadius);
+
+	float diameter = sphereRadius * 2;
+	//vSub = (3.14 / 3) * (subHeight * subHeight) * (1.5 * (sphereRadius * 2) - subHeight);
+	vSub = diameter * diameter * subHeight;
+
+	return (p * (4.9) * vSub);
 }
 
-float BuoyancyForce(int i) {
-	
-	float subHeight = waveVertexPosition[i].y - (spherePosition.y - sphereRadius);
-	vSub = (3.14 / 3) * (subHeight * subHeight) * (1.5 * (sphereRadius * 2) - subHeight);
+float DragForce() {
 
-	return p * (-9.81) * vSub;
+
+	return (-1 / 2) * 1;
+}
+
+void UpdateSphere(float dt) {
+	float totalForce;
+	float gravity = sphereMass * -9.8;
+
+	sphereOnWavePosition = spherePosition;
+	sphereOnWavePosition.y = A * cos(dot(waveVector, initialSpherePosition) - omega * time) + 5;
+	
+	if ((spherePosition.y - sphereRadius) <= sphereOnWavePosition.y) {
+		totalForce = gravity + BuoyancyForce();
+	}
+	else
+		totalForce = gravity;
+
+	// Euler movement
+	spherePosition.y = spherePosition.y + dt * totalForce;
 }
 
 void PhysicsInit() {
@@ -94,6 +119,9 @@ void PhysicsInit() {
 	vec3 meshPosition(-8.5, 5, -6.5);
 	waveInitialVertexPosition = CreateClothMeshArray(ClothMesh::numRows, ClothMesh::numCols, separationX, separationY, meshPosition);
 	waveVertexPosition = CreateClothMeshArray(ClothMesh::numRows, ClothMesh::numCols, separationX, separationY, meshPosition);
+
+	initialSpherePosition = vec3(spherePosition.x, 5, spherePosition.z);
+
 }
 void PhysicsUpdate(float dt) {
 	//TODO
@@ -102,12 +130,9 @@ void PhysicsUpdate(float dt) {
 		waveVector = vec3(1.0, 1.0, 0.0);
 		waveVertexPosition[i] = waveInitialVertexPosition[i] - normalize(waveVector) * A * sin(dot(waveVector, waveInitialVertexPosition[i]) - omega * time);
 		waveVertexPosition[i].y = A * cos(dot(waveVector, waveInitialVertexPosition[i]) - omega * time) + 5;
-
-		if ((spherePosition - vec3(0.0f, sphereRadius, 0.0f)) < waveVertexPosition[i]) {
-			cout << "Collision" << endl;
-		}
 	}
-	UpdateSphere(dt, -4.9);
+
+	UpdateSphere(dt);
 	ClothMesh::updateClothMesh(&waveVertexPosition[0].x);
 }
 void PhysicsCleanup() {
