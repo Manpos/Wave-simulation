@@ -93,7 +93,7 @@ float BuoyancyForce() {
 	//vSub = (3.14 / 3) * (subHeight * subHeight) * (1.5 * (sphereRadius * 2) - subHeight);
 	vSub = diameter * diameter * subHeight;
 	
-	return (p * (gravity) * vSub);
+	return (p * (4.9) * vSub);
 }
 
 vec3 DragForce() {
