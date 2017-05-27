@@ -1,8 +1,9 @@
 ﻿  physics.cpp
-c:\users\mripoll\documents\github\wave-simulation\src\physics.cpp(22): warning C4305: 'initializing': truncation from 'double' to 'float'
-c:\users\mripoll\documents\github\wave-simulation\src\physics.cpp(90): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
-c:\users\mripoll\documents\github\wave-simulation\src\physics.cpp(99): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-  GL_framework.vcxproj -> C:\Users\mripoll\Documents\GitHub\Wave-simulation\x64\Debug\GL_framework.exe
-  GL_framework.vcxproj -> C:\Users\mripoll\Documents\GitHub\Wave-simulation\x64\Debug\GL_framework.pdb (Partial PDB)
-  0 File(s) copied
-  0 File(s) copied
+c:\users\miquel\documents\github\wave-simulation\src\physics.cpp(22): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
+c:\users\miquel\documents\github\wave-simulation\src\physics.cpp(39): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+c:\users\miquel\documents\github\wave-simulation\src\physics.cpp(57): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+c:\users\miquel\documents\github\wave-simulation\src\physics.cpp(96): warning C4244: 'return': conversión de 'double' a 'float'; posible pérdida de datos
+  GL_framework.vcxproj -> C:\Users\Miquel\Documents\GitHub\Wave-simulation\x64\Debug\GL_framework.exe
+  GL_framework.vcxproj -> C:\Users\Miquel\Documents\GitHub\Wave-simulation\x64\Debug\GL_framework.pdb (Partial PDB)
+  0 archivo(s) copiado(s)
+  0 archivo(s) copiado(s)
